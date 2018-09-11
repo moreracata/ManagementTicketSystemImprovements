@@ -1,0 +1,12 @@
+﻿@model DateTime?
+
+
+@if (!Model.HasValue)
+{
+    <input type="date" class="form-control" />
+
+}
+else
+{
+    <input type="date" class="form-control" value="@string.Format("{0:yyyy-MM-dd}", Model.Value)"/>
+}

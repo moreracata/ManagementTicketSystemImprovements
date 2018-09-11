@@ -1,0 +1,25 @@
+﻿.modal-content {
+    width: 600px !important;
+    margin: 30px auto !important;
+}
+
+
+.tickets-table .edit-link {
+    background: url(Images/link-image.png) no-repeat;
+    font-weight: bold;
+    color: black;
+    margin: auto;
+    text-decoration: none;
+    width: 50px;
+    display: table-cell;
+    background-position: right;
+}
+
+.tickets-table td, .tickets-table th {
+    text-align: center;
+}
+
+.tickets-table {
+    margin-top: 19px;
+}
+

@@ -1,0 +1,76 @@
+﻿@model IEnumerable<TicketManagement.Models.Ticket>
+
+
+<h2>Administracion de Tickets</h2>
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>Filtros de busqueda</legend>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                <input type="text" class="form-control">
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                @Html.DropDownList("Categoria", (List<SelectListItem>)ViewBag.CategoriesList, new { @class = "form-control" })
+
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                <input type="date" class="form-control" />
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                <button type="button" class="form-control">Buscar</button>
+            </div>
+        </div>
+    </fieldset>
+}
+
+
+<table class="table tickets-table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Subject)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StatusID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastModificationDate)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink("" + item.Id, "EditTicket","Tickets" ,new { id = item.Id }, new { @class = "modal-link edit-link" })
+                
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastModificationDate)
+            </td>
+            
+        </tr>
+    }
+
+</table>
+
+<div id="modal-container" class="modal fade"
+     tabindex="-1" role="dialog">
+    <div class="modal-content">
+    </div>
+</div>
