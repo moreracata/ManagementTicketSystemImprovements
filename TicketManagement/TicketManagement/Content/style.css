@@ -1,4 +1,10 @@
-﻿.modal-content {
+﻿.logo {
+    transform: rotate(20deg);
+    margin: 10px 10px;
+    width: 29px;
+}
+
+.modal-content {
     width: 600px !important;
     margin: 30px auto !important;
 }
@@ -22,4 +28,6 @@
 .tickets-table {
     margin-top: 19px;
 }
+
+
 

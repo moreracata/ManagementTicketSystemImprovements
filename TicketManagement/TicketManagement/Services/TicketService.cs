@@ -8,13 +8,13 @@ using System.Linq;
 using TicketManagement.Models;
 
 
-
 namespace TicketManagement.Services
 {
     public class TicketService
     {
 
         private ApplicationDbContext db = new ApplicationDbContext();
+        private readonly int AmmountOfRecordsByPage = 10;
 
         public Ticket GetTicketById(int id) {
             Ticket ticket = db.Tickets.Find(id);
@@ -26,6 +26,10 @@ namespace TicketManagement.Services
             return tickets.ToList();
         }
 
+        public List<Ticket> GetTicketsListByPage(int pageNumber) {
+            var tickets = db.Tickets.OrderBy(x => x.Id).Skip((pageNumber - 1) * AmmountOfRecordsByPage).Take(AmmountOfRecordsByPage).Include(t => t.UserAuthor).Include(t => t.UserRecepient).Include(t => t.Category).Include(t => t.Priority).Include(t => t.Status);
+            return tickets.ToList();
+        }
         public void CreateNewTicket(Ticket ticket) {
                 db.Tickets.Add(ticket);
                 db.SaveChanges();

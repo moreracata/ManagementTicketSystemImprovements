@@ -17,9 +17,29 @@ namespace TicketManagement.Controllers
         private TicketService ticketService = new TicketService();
 
         // GET: Tickets
-        public ActionResult Index()
+        public ActionResult Index(int pageNumber = 1)
         {
-            var tickets = ticketService.GetTicketsList();
+            var tickets = ticketService.GetTicketsListByPage(pageNumber);
+            List<SelectListItem> categoriesSelect = new List<SelectListItem>();
+            var categories = ticketService.GetAllCategories();
+            foreach (var category in categories)
+            {
+                categoriesSelect.Add(new SelectListItem() { Text = category.Name, Value = "" + category.Id });
+            }
+            ViewBag.CategoriesList = categoriesSelect;
+
+
+            var model = new TicketViewModel();
+            model.Tickets = tickets;
+            model.CurrentPage = pageNumber;
+            model.AmmountOfRecords = ticketService.GetTicketsList().Count();
+            model.RecordsByPage = 10;
+            return View(model);
+        }
+
+        public ActionResult IndexV1(int pageNumber = 1)
+        {
+            var tickets = ticketService.GetTicketsListByPage(pageNumber);
             List<SelectListItem> categoriesSelect = new List<SelectListItem>();
             var categories = ticketService.GetAllCategories();
             foreach (var category in categories) {
@@ -85,8 +105,20 @@ namespace TicketManagement.Controllers
             ViewBag.UsersList = usersSelect;
 
 
-            return PartialView("_ModalDetails", ticket);
+            return PartialView("_Edit", ticket);
             
+        }
+
+        public ActionResult CreateTicket()
+        {
+
+            ViewBag.CategoriesList = new SelectList(ticketService.GetAllCategories(), "Id", "Name");
+            ViewBag.StatusList = new SelectList(ticketService.GetAllStatus(), "Id", "Name");
+            ViewBag.PrioritiesList = new SelectList(ticketService.GetAllPriorities(), "Id", "Name");
+            ViewBag.UsersList = new SelectList(ticketService.GetAllUsers(), "Id", "Email");
+
+
+            return PartialView("_Create");
         }
 
         // GET: Tickets/Details/5
