@@ -1,0 +1,56 @@
+﻿@model TicketManagement.Models.Paginator
+
+@{ 
+    var ammountOfPages = (int)Math.Ceiling((double)Model.AmmountOfRecords / Model.RecordsByPage);
+}
+<ul class="pagination">
+    @if (Model.CurrentPage == 1)
+    {
+        <li disabled class="page-item">@Html.ActionLink("Previous", null, new { pageNumber = 1 })</li>
+    }
+    else
+    {
+        <li class="page-item">@Html.ActionLink("Previous", null, new { pageNumber = Model.CurrentPage -1 })</li>
+    }
+
+    @if (Model.CurrentPage == ammountOfPages)
+    {
+        <li disabled class="page-item">@Html.ActionLink("Next", null, new { pageNumber = ammountOfPages })</li>
+    }
+    else
+    {
+        <li class="page-item">@Html.ActionLink("Next", null, new { pageNumber = Model.CurrentPage+1 })</li>
+    }
+</ul>
+
+
+@{ 
+    var initial = 1;
+    var rate = 2;
+    var maxOfPages = rate * 2 + 1;
+    var final = ammountOfPages > maxOfPages ? maxOfPages : ammountOfPages;
+
+    if (Model.CurrentPage > rate+1) {
+        initial = Model.CurrentPage - 1;
+        if (ammountOfPages > Model.CurrentPage + rate ) {
+            final = Model.CurrentPage + rate;
+        } else {
+            final = ammountOfPages;
+        }
+    }
+}
+<ul class="pagination">
+    <li class="page-item">@Html.ActionLink("First", null, new { pageNumber = 1 })</li>
+    @for (int i = initial; i <= final; i++)
+    {
+        if (i == Model.CurrentPage)
+        {
+            <li class="active page-item">@Html.ActionLink(i.ToString(), null, new { pageNumber = i })</li>
+        }
+        else
+        {
+            <li class="page-item">@Html.ActionLink(i.ToString(), null, new { pageNumber = i })</li>
+        }
+    }
+    <li class="page-item">@Html.ActionLink("Last", null, new { pageNumber = ammountOfPages })</li>
+</ul>

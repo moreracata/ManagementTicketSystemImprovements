@@ -41,12 +41,12 @@ namespace TicketManagement.Models
         [Display(Name = "Fecha Creacion")]
         [DisplayName("Fecha Creacion")]
         [DataType(DataType.DateTime)]
-        public DateTime? CreationDate { get; set; }
+        public DateTime CreationDate { get; set; }
 
         [Display(Name = "Fecha Modificacion")]
         [DisplayName("Fecha Modificacion")]
         [DataType(DataType.DateTime)]
-        public DateTime? LastModificationDate { get; set; }
+        public DateTime LastModificationDate { get; set; }
 
         [Display(Name = "Contenido")]
         [DisplayName("Contenido")]

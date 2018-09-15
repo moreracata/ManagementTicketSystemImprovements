@@ -9,17 +9,37 @@
     margin: 30px auto !important;
 }
 
-
 .tickets-table .edit-link {
-    background: url(Images/link-image.png) no-repeat;
     font-weight: bold;
     color: black;
     margin: auto;
     text-decoration: none;
     width: 50px;
-    display: table-cell;
-    background-position: right;
 }
+
+.tickets-table .edit-link:after {
+    background: url(Images/link-image.png) no-repeat;
+    background-position: right;
+    content: "";
+    position: absolute;
+    width: 21px;
+    height: 19px;
+}
+
+.create-link {
+    margin: 26px 0px 0px 0px !important;
+}
+
+.create-link, .find-btn {
+    color: white !important;
+    background-color: #66811f;
+}
+
+.form-control {
+    border-color: #66811f !important;
+    color: #66811f;
+}
+
 
 .tickets-table td, .tickets-table th {
     text-align: center;
@@ -29,5 +49,71 @@
     margin-top: 19px;
 }
 
+.navbar-brand.navbar-brand-custom {
+    font-family: 'Gamja Flower', cursive !important;
+    color: #66811f !important;
+    font-size: 29px;
+    width: 114%;
+}
 
 
+.navbar-brand.navbar-brand-custom:after {
+    content: "";
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    background-position: right;
+    z-index: -1;
+    background: url(Images/logo.png) 0 0 no-repeat;
+    -webkit-transform: rotate(30deg);
+    transform: rotate(30deg);
+    background-size: 26px;
+}
+
+.navbar-brand.navbar-brand-custom:hover, .find-btn:hover, .create-link:hover {
+    -webkit-mask-image: linear-gradient(-75deg, rgba(0,0,0,.6) 30%, #000 50%, rgba(0,0,0,.6) 70%);
+    -webkit-mask-size: 200%;
+    animation: shine 2s infinite;
+}
+
+.paginator-left {
+    float:left;
+}
+.paginator-right {
+    float:right;
+}
+
+footer {
+    clear: both;
+    text-align: center;
+}
+@-webkit-keyframes shine {
+    from {
+        -webkit-mask-position: 150%;
+    }
+
+    to {
+        -webkit-mask-position: -50%;
+    }
+}
+
+
+
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+    background-color: #66811f !important;
+    border-color: #66811f !important;
+    color: #fff !important;
+}
+
+a {
+    color: #66811f !important;
+}
+
+.pagination > li > a, .pagination > li > span {
+    border-color: #66811f !important;
+}

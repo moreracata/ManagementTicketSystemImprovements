@@ -88,7 +88,7 @@ namespace TicketManagement.Migrations
 
 
             var nuevo = new Ticket() {
-                Id = 1,
+                Id = 0,
                 Subject = "This a test ticket",
                 CreationDate = DateTime.Now,
                 LastModificationDate = DateTime.Now,
@@ -105,7 +105,7 @@ namespace TicketManagement.Migrations
             {
                 Id = 1,
                 Subject = "This a test ticket",
-                CreationDate = DateTime.Now,
+                CreationDate = new DateTime(2018, 9, 1),
                 LastModificationDate = DateTime.Now,
                 Contenido = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac vehicula risus. Maecenas eu odio tempus, commodo ligula nec, mollis dolor. Donec at lacus ut ex mattis viverra. Nullam aliquam sed dolor id pulvinar. Donec vitae imperdiet risus. Aenean sed ante scelerisque, elementum odio sed, interdum metus. Praesent pulvinar lobortis lacus eget luctus. Phasellus dictum turpis tortor, quis consectetur lacus pellentesque at.",
                 AuthorID = user2.Id,
@@ -178,11 +178,11 @@ namespace TicketManagement.Migrations
             {
                 Subject = "This a test ticket",
                 CreationDate = DateTime.Now,
-                LastModificationDate = DateTime.Now,
+                LastModificationDate = new DateTime(2018, 9, 12),
                 Contenido = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac vehicula risus. Maecenas eu odio tempus, commodo ligula nec, mollis dolor. Donec at lacus ut ex mattis viverra. Nullam aliquam sed dolor id pulvinar. Donec vitae imperdiet risus. Aenean sed ante scelerisque, elementum odio sed, interdum metus. Praesent pulvinar lobortis lacus eget luctus. Phasellus dictum turpis tortor, quis consectetur lacus pellentesque at.",
                 AuthorID = user3.Id,
                 RecepientID = user4.Id,
-                CategoryID = 2,
+                CategoryID = 3,
                 PriorityID = 1,
                 StatusID = 2
             });
@@ -242,12 +242,12 @@ namespace TicketManagement.Migrations
             context.Tickets.AddOrUpdate(new Ticket()
             {
                 Subject = "This a test ticket",
-                CreationDate = DateTime.Now,
+                CreationDate = new DateTime(2018, 9, 12),
                 LastModificationDate = DateTime.Now,
                 Contenido = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac vehicula risus. Maecenas eu odio tempus, commodo ligula nec, mollis dolor. Donec at lacus ut ex mattis viverra. Nullam aliquam sed dolor id pulvinar. Donec vitae imperdiet risus. Aenean sed ante scelerisque, elementum odio sed, interdum metus. Praesent pulvinar lobortis lacus eget luctus. Phasellus dictum turpis tortor, quis consectetur lacus pellentesque at.",
                 AuthorID = user3.Id,
                 RecepientID = user4.Id,
-                CategoryID = 2,
+                CategoryID = 3,
                 PriorityID = 1,
                 StatusID = 2
             });
@@ -299,7 +299,79 @@ namespace TicketManagement.Migrations
                 Contenido = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac vehicula risus. Maecenas eu odio tempus, commodo ligula nec, mollis dolor. Donec at lacus ut ex mattis viverra. Nullam aliquam sed dolor id pulvinar. Donec vitae imperdiet risus. Aenean sed ante scelerisque, elementum odio sed, interdum metus. Praesent pulvinar lobortis lacus eget luctus. Phasellus dictum turpis tortor, quis consectetur lacus pellentesque at.",
                 AuthorID = user3.Id,
                 RecepientID = user4.Id,
+                CategoryID = 3,
+                PriorityID = 1,
+                StatusID = 2
+            });
+            context.Tickets.AddOrUpdate(new Ticket()
+            {
+                Subject = "This a test ticket",
+                CreationDate = DateTime.Now,
+                LastModificationDate = DateTime.Now,
+                Contenido = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac vehicula risus. Maecenas eu odio tempus, commodo ligula nec, mollis dolor. Donec at lacus ut ex mattis viverra. Nullam aliquam sed dolor id pulvinar. Donec vitae imperdiet risus. Aenean sed ante scelerisque, elementum odio sed, interdum metus. Praesent pulvinar lobortis lacus eget luctus. Phasellus dictum turpis tortor, quis consectetur lacus pellentesque at.",
+                AuthorID = user3.Id,
+                RecepientID = user4.Id,
                 CategoryID = 2,
+                PriorityID = 1,
+                StatusID = 2
+            });
+            context.Tickets.AddOrUpdate(new Ticket()
+            {
+                Subject = "This a test keyWord",
+                CreationDate = new DateTime(2018, 9, 1),
+                LastModificationDate = DateTime.Now,
+                Contenido = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac vehicula risus. Maecenas eu odio tempus, commodo ligula nec, mollis dolor. Donec at lacus ut ex mattis viverra. Nullam aliquam sed dolor id pulvinar. Donec vitae imperdiet risus. Aenean sed ante scelerisque, elementum odio sed, interdum metus. Praesent pulvinar lobortis lacus eget luctus. Phasellus dictum turpis tortor, quis consectetur lacus pellentesque at.",
+                AuthorID = user3.Id,
+                RecepientID = user4.Id,
+                CategoryID = 1,
+                PriorityID = 1,
+                StatusID = 2
+            });
+            context.Tickets.AddOrUpdate(new Ticket()
+            {
+                Subject = "This a test ticket",
+                CreationDate = new DateTime(2018, 9, 12),
+                LastModificationDate = DateTime.Now,
+                Contenido = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac vehicula risus. Maecenas eu odio tempus, commodo ligula nec, mollis dolor. Donec at lacus ut ex mattis viverra. Nullam aliquam sed dolor id pulvinar. Donec vitae imperdiet risus. Aenean sed ante scelerisque, elementum odio sed, interdum metus. Praesent pulvinar lobortis lacus eget luctus. Phasellus dictum turpis tortor, quis consectetur lacus pellentesque at.",
+                AuthorID = user3.Id,
+                RecepientID = user4.Id,
+                CategoryID = 2,
+                PriorityID = 1,
+                StatusID = 2
+            });
+            context.Tickets.AddOrUpdate(new Ticket()
+            {
+                Subject = "This a test ticket",
+                CreationDate = DateTime.Now,
+                LastModificationDate = DateTime.Now,
+                Contenido = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac vehicula risus. Maecenas eu odio tempus, commodo ligula nec, mollis dolor. Donec at lacus ut ex mattis viverra. Nullam aliquam sed dolor id pulvinar. Donec vitae imperdiet risus. Aenean sed ante scelerisque, elementum odio sed, interdum metus. Praesent pulvinar lobortis lacus eget luctus. Phasellus dictum turpis tortor, quis consectetur lacus pellentesque at.",
+                AuthorID = user3.Id,
+                RecepientID = user4.Id,
+                CategoryID = 3,
+                PriorityID = 1,
+                StatusID = 2
+            });
+            context.Tickets.AddOrUpdate(new Ticket()
+            {
+                Subject = "This a test keyWord",
+                CreationDate = DateTime.Now,
+                LastModificationDate = DateTime.Now,
+                Contenido = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac vehicula risus. Maecenas eu odio tempus, commodo ligula nec, mollis dolor. Donec at lacus ut ex mattis viverra. Nullam aliquam sed dolor id pulvinar. Donec vitae imperdiet risus. Aenean sed ante scelerisque, elementum odio sed, interdum metus. Praesent pulvinar lobortis lacus eget luctus. Phasellus dictum turpis tortor, quis consectetur lacus pellentesque at.",
+                AuthorID = user3.Id,
+                RecepientID = user4.Id,
+                CategoryID = 2,
+                PriorityID = 1,
+                StatusID = 2
+            });
+            context.Tickets.AddOrUpdate(new Ticket()
+            {
+                Subject = "This a test ticket",
+                CreationDate = new DateTime(2018, 9, 1),
+                LastModificationDate = DateTime.Now,
+                Contenido = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac vehicula risus. Maecenas eu odio tempus, commodo ligula nec, mollis dolor. Donec at lacus ut ex mattis viverra. Nullam aliquam sed dolor id pulvinar. Donec vitae imperdiet risus. Aenean sed ante scelerisque, elementum odio sed, interdum metus. Praesent pulvinar lobortis lacus eget luctus. Phasellus dictum turpis tortor, quis consectetur lacus pellentesque at.",
+                AuthorID = user3.Id,
+                RecepientID = user4.Id,
+                CategoryID = 1,
                 PriorityID = 1,
                 StatusID = 2
             });
@@ -329,8 +401,20 @@ namespace TicketManagement.Migrations
             });
             context.Tickets.AddOrUpdate(new Ticket()
             {
-                Subject = "This a test ticket",
+                Subject = "This a test keyWord",
                 CreationDate = DateTime.Now,
+                LastModificationDate = DateTime.Now,
+                Contenido = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac vehicula risus. Maecenas eu odio tempus, commodo ligula nec, mollis dolor. Donec at lacus ut ex mattis viverra. Nullam aliquam sed dolor id pulvinar. Donec vitae imperdiet risus. Aenean sed ante scelerisque, elementum odio sed, interdum metus. Praesent pulvinar lobortis lacus eget luctus. Phasellus dictum turpis tortor, quis consectetur lacus pellentesque at.",
+                AuthorID = user3.Id,
+                RecepientID = user4.Id,
+                CategoryID = 2,
+                PriorityID = 1,
+                StatusID = 2
+            });
+            context.Tickets.AddOrUpdate(new Ticket()
+            {
+                Subject = "This a test ticket",
+                CreationDate = new DateTime(2018, 9, 12),
                 LastModificationDate = DateTime.Now,
                 Contenido = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac vehicula risus. Maecenas eu odio tempus, commodo ligula nec, mollis dolor. Donec at lacus ut ex mattis viverra. Nullam aliquam sed dolor id pulvinar. Donec vitae imperdiet risus. Aenean sed ante scelerisque, elementum odio sed, interdum metus. Praesent pulvinar lobortis lacus eget luctus. Phasellus dictum turpis tortor, quis consectetur lacus pellentesque at.",
                 AuthorID = user3.Id,
@@ -353,7 +437,7 @@ namespace TicketManagement.Migrations
             });
             context.Tickets.AddOrUpdate(new Ticket()
             {
-                Subject = "This a test ticket",
+                Subject = "This a test keyWord",
                 CreationDate = DateTime.Now,
                 LastModificationDate = DateTime.Now,
                 Contenido = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac vehicula risus. Maecenas eu odio tempus, commodo ligula nec, mollis dolor. Donec at lacus ut ex mattis viverra. Nullam aliquam sed dolor id pulvinar. Donec vitae imperdiet risus. Aenean sed ante scelerisque, elementum odio sed, interdum metus. Praesent pulvinar lobortis lacus eget luctus. Phasellus dictum turpis tortor, quis consectetur lacus pellentesque at.",
@@ -365,92 +449,8 @@ namespace TicketManagement.Migrations
             });
             context.Tickets.AddOrUpdate(new Ticket()
             {
-                Subject = "This a test ticket",
-                CreationDate = DateTime.Now,
-                LastModificationDate = DateTime.Now,
-                Contenido = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac vehicula risus. Maecenas eu odio tempus, commodo ligula nec, mollis dolor. Donec at lacus ut ex mattis viverra. Nullam aliquam sed dolor id pulvinar. Donec vitae imperdiet risus. Aenean sed ante scelerisque, elementum odio sed, interdum metus. Praesent pulvinar lobortis lacus eget luctus. Phasellus dictum turpis tortor, quis consectetur lacus pellentesque at.",
-                AuthorID = user3.Id,
-                RecepientID = user4.Id,
-                CategoryID = 2,
-                PriorityID = 1,
-                StatusID = 2
-            });
-            context.Tickets.AddOrUpdate(new Ticket()
-            {
-                Subject = "This a test ticket",
-                CreationDate = DateTime.Now,
-                LastModificationDate = DateTime.Now,
-                Contenido = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac vehicula risus. Maecenas eu odio tempus, commodo ligula nec, mollis dolor. Donec at lacus ut ex mattis viverra. Nullam aliquam sed dolor id pulvinar. Donec vitae imperdiet risus. Aenean sed ante scelerisque, elementum odio sed, interdum metus. Praesent pulvinar lobortis lacus eget luctus. Phasellus dictum turpis tortor, quis consectetur lacus pellentesque at.",
-                AuthorID = user3.Id,
-                RecepientID = user4.Id,
-                CategoryID = 2,
-                PriorityID = 1,
-                StatusID = 2
-            });
-            context.Tickets.AddOrUpdate(new Ticket()
-            {
-                Subject = "This a test ticket",
-                CreationDate = DateTime.Now,
-                LastModificationDate = DateTime.Now,
-                Contenido = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac vehicula risus. Maecenas eu odio tempus, commodo ligula nec, mollis dolor. Donec at lacus ut ex mattis viverra. Nullam aliquam sed dolor id pulvinar. Donec vitae imperdiet risus. Aenean sed ante scelerisque, elementum odio sed, interdum metus. Praesent pulvinar lobortis lacus eget luctus. Phasellus dictum turpis tortor, quis consectetur lacus pellentesque at.",
-                AuthorID = user3.Id,
-                RecepientID = user4.Id,
-                CategoryID = 2,
-                PriorityID = 1,
-                StatusID = 2
-            });
-            context.Tickets.AddOrUpdate(new Ticket()
-            {
-                Subject = "This a test ticket",
-                CreationDate = DateTime.Now,
-                LastModificationDate = DateTime.Now,
-                Contenido = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac vehicula risus. Maecenas eu odio tempus, commodo ligula nec, mollis dolor. Donec at lacus ut ex mattis viverra. Nullam aliquam sed dolor id pulvinar. Donec vitae imperdiet risus. Aenean sed ante scelerisque, elementum odio sed, interdum metus. Praesent pulvinar lobortis lacus eget luctus. Phasellus dictum turpis tortor, quis consectetur lacus pellentesque at.",
-                AuthorID = user3.Id,
-                RecepientID = user4.Id,
-                CategoryID = 2,
-                PriorityID = 1,
-                StatusID = 2
-            });
-            context.Tickets.AddOrUpdate(new Ticket()
-            {
-                Subject = "This a test ticket",
-                CreationDate = DateTime.Now,
-                LastModificationDate = DateTime.Now,
-                Contenido = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac vehicula risus. Maecenas eu odio tempus, commodo ligula nec, mollis dolor. Donec at lacus ut ex mattis viverra. Nullam aliquam sed dolor id pulvinar. Donec vitae imperdiet risus. Aenean sed ante scelerisque, elementum odio sed, interdum metus. Praesent pulvinar lobortis lacus eget luctus. Phasellus dictum turpis tortor, quis consectetur lacus pellentesque at.",
-                AuthorID = user3.Id,
-                RecepientID = user4.Id,
-                CategoryID = 2,
-                PriorityID = 1,
-                StatusID = 2
-            });
-            context.Tickets.AddOrUpdate(new Ticket()
-            {
-                Subject = "This a test ticket",
-                CreationDate = DateTime.Now,
-                LastModificationDate = DateTime.Now,
-                Contenido = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac vehicula risus. Maecenas eu odio tempus, commodo ligula nec, mollis dolor. Donec at lacus ut ex mattis viverra. Nullam aliquam sed dolor id pulvinar. Donec vitae imperdiet risus. Aenean sed ante scelerisque, elementum odio sed, interdum metus. Praesent pulvinar lobortis lacus eget luctus. Phasellus dictum turpis tortor, quis consectetur lacus pellentesque at.",
-                AuthorID = user3.Id,
-                RecepientID = user4.Id,
-                CategoryID = 2,
-                PriorityID = 1,
-                StatusID = 2
-            });
-            context.Tickets.AddOrUpdate(new Ticket()
-            {
-                Subject = "This a test ticket",
-                CreationDate = DateTime.Now,
-                LastModificationDate = DateTime.Now,
-                Contenido = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac vehicula risus. Maecenas eu odio tempus, commodo ligula nec, mollis dolor. Donec at lacus ut ex mattis viverra. Nullam aliquam sed dolor id pulvinar. Donec vitae imperdiet risus. Aenean sed ante scelerisque, elementum odio sed, interdum metus. Praesent pulvinar lobortis lacus eget luctus. Phasellus dictum turpis tortor, quis consectetur lacus pellentesque at.",
-                AuthorID = user3.Id,
-                RecepientID = user4.Id,
-                CategoryID = 2,
-                PriorityID = 1,
-                StatusID = 2
-            });
-            context.Tickets.AddOrUpdate(new Ticket()
-            {
-                Subject = "This a test ticket",
-                CreationDate = DateTime.Now,
+                Subject = "This a test keyWord",
+                CreationDate = new DateTime(2018, 9, 12),
                 LastModificationDate = DateTime.Now,
                 Contenido = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac vehicula risus. Maecenas eu odio tempus, commodo ligula nec, mollis dolor. Donec at lacus ut ex mattis viverra. Nullam aliquam sed dolor id pulvinar. Donec vitae imperdiet risus. Aenean sed ante scelerisque, elementum odio sed, interdum metus. Praesent pulvinar lobortis lacus eget luctus. Phasellus dictum turpis tortor, quis consectetur lacus pellentesque at.",
                 AuthorID = user3.Id,

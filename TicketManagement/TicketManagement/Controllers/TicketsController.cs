@@ -17,22 +17,25 @@ namespace TicketManagement.Controllers
         private TicketService ticketService = new TicketService();
 
         // GET: Tickets
-        public ActionResult Index(int pageNumber = 1)
+        public ActionResult Index(string keywordFilter,DateTime? creationDateFilter, int? categoryFilter, int pageNumber = 1)
         {
-            var tickets = ticketService.GetTicketsListByPage(pageNumber);
-            List<SelectListItem> categoriesSelect = new List<SelectListItem>();
-            var categories = ticketService.GetAllCategories();
-            foreach (var category in categories)
-            {
-                categoriesSelect.Add(new SelectListItem() { Text = category.Name, Value = "" + category.Id });
-            }
-            ViewBag.CategoriesList = categoriesSelect;
+            var tickets = ticketService.GetTicketsListByFilters(pageNumber, creationDateFilter, categoryFilter, keywordFilter);
+            var tickets2 = ticketService.GetTicketsList();  //var tickets = ticketService.GetTicketsListByPage(pageNumber);
+               List <SelectListItem> categoriesSelect = new List<SelectListItem>();
+               var categories = ticketService.GetAllCategories();
+               foreach (var category in categories)
+               {
+                   categoriesSelect.Add(new SelectListItem() { Text = category.Name, Value = "" + category.Id });
+               }
+                categoriesSelect.Add(new SelectListItem() { Text = "All Categories", Value = "0",Selected=true
+                });
+                ViewBag.CategoriesList = categoriesSelect;
 
 
-            var model = new TicketViewModel();
+               var model = new TicketViewModel();
             model.Tickets = tickets;
             model.CurrentPage = pageNumber;
-            model.AmmountOfRecords = ticketService.GetTicketsList().Count();
+            model.AmmountOfRecords = ticketService.GetTicketsListByFilters(creationDateFilter, categoryFilter, keywordFilter).Count();
             model.RecordsByPage = 10;
             return View(model);
         }
@@ -104,6 +107,7 @@ namespace TicketManagement.Controllers
             ViewBag.PrioritiesList = prioritiesSelect;
             ViewBag.UsersList = usersSelect;
 
+            ticket.LastModificationDate = DateTime.Now;
 
             return PartialView("_Edit", ticket);
             

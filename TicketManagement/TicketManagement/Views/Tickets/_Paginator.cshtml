@@ -3,10 +3,10 @@
 @{ 
     var ammountOfPages = (int)Math.Ceiling((double)Model.AmmountOfRecords / Model.RecordsByPage);
 }
-<ul class="pagination">
+<ul class="pagination paginator-left">
     @if (Model.CurrentPage == 1)
     {
-        <li disabled class="page-item">@Html.ActionLink("Previous", null, new { pageNumber = 1 })</li>
+        <li  class="disabled page-item">@Html.ActionLink("Previous", null, new { pageNumber = 1 })</li>
     }
     else
     {
@@ -15,7 +15,7 @@
 
     @if (Model.CurrentPage == ammountOfPages)
     {
-        <li disabled class="page-item">@Html.ActionLink("Next", null, new { pageNumber = ammountOfPages })</li>
+        <li class="disabled page-item">@Html.ActionLink("Next", null, new { pageNumber = ammountOfPages })</li>
     }
     else
     {
@@ -39,7 +39,7 @@
         }
     }
 }
-<ul class="pagination">
+<ul class="pagination paginator-right">
     <li class="page-item">@Html.ActionLink("First", null, new { pageNumber = 1 })</li>
     @for (int i = initial; i <= final; i++)
     {

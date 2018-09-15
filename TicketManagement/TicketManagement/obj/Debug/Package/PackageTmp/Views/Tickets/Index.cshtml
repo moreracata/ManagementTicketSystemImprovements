@@ -1,0 +1,76 @@
+﻿@model TicketManagement.Models.TicketViewModel
+
+<h2>Administracion de Tickets</h2>
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>Filtros de busqueda</legend>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                <input type="text" class="form-control">
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                @Html.DropDownList("Categoria", (List<SelectListItem>)ViewBag.CategoriesList, new { @class = "form-control" })
+
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                <input type="date" class="form-control" />
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                <button type="button" class="form-control">Buscar</button>
+            </div>
+        </div>
+    </fieldset>
+}
+
+@Html.ActionLink("Create New Ticket", "CreateTicket", "Tickets", null, new { @class = "btn btn-primary modal-link edit-link" })
+
+
+<table class="table tickets-table">
+    <tr>
+        <th>
+            # Ticket
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Status
+        </th>
+        <th>
+            Creation Date
+        </th>
+        <th>
+            Modification Date
+        </th>
+    </tr>
+
+    @foreach (var item in Model.Tickets)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink("" + item.Id, "EditTicket", "Tickets", new { id = item.Id }, new { @class = "modal-link edit-link" })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastModificationDate)
+            </td>
+
+        </tr>
+    }
+</table>
+@{Html.RenderPartial("_Paginator", Model); }
+
+<div id="modal-container" class="modal fade"
+     tabindex="-1" role="dialog">
+    <div class="modal-content">
+    </div>
+</div>

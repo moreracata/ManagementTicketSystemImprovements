@@ -1,13 +1,14 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Administración de Tiquetes</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    <link href="https://fonts.googleapis.com/css?family=Gamja+Flower" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/Images/favicon.ico" />
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -18,14 +19,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Nombre de aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                <img src="img_girl.jpg" alt="Girl in a jacket">
+                @Html.ActionLink("Ticket Management System", "Index", "Home", new { area = "" }, new { @class = "navbar-brand navbar-brand-custom" })
+                
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                   
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

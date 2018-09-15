@@ -1,0 +1,50 @@
+﻿.logo {
+    transform: rotate(20deg);
+    margin: 10px 10px;
+    width: 29px;
+}
+
+.modal-content {
+    width: 600px !important;
+    margin: 30px auto !important;
+}
+
+
+.tickets-table .edit-link {
+    background: url(Images/link-image.png) no-repeat;
+    font-weight: bold;
+    color: black;
+    margin: auto;
+    text-decoration: none;
+    width: 50px;
+    display: table-cell;
+    background-position: right;
+}
+
+.tickets-table td, .tickets-table th {
+    text-align: center;
+}
+
+.tickets-table {
+    margin-top: 19px;
+}
+
+.navbar-brand.navbar-brand-custom {
+    font-family: 'Gamja Flower', cursive !important;
+    color: #66811f !important;
+    font-size: 29px;
+}
+
+
+    .navbar-brand.navbar-brand-custom:after {
+        content: "";
+        position: absolute;
+        width: 26px;
+        height: 26px;
+        background-position: right;
+        z-index: -1;
+        background: url(Images/logo.png) 0 0 no-repeat;
+        -webkit-transform: rotate(30deg);
+        transform: rotate(30deg);
+        background-size: 26px;
+    }

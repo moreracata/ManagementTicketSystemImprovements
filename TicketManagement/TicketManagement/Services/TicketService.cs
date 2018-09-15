@@ -30,6 +30,59 @@ namespace TicketManagement.Services
             var tickets = db.Tickets.OrderBy(x => x.Id).Skip((pageNumber - 1) * AmmountOfRecordsByPage).Take(AmmountOfRecordsByPage).Include(t => t.UserAuthor).Include(t => t.UserRecepient).Include(t => t.Category).Include(t => t.Priority).Include(t => t.Status);
             return tickets.ToList();
         }
+
+        public List<Ticket> GetTicketsListByCategoryAndPage(int categoryId, int pageNumber)
+        {
+            var tickets = db.Tickets.Where(x => x.CategoryID == categoryId).OrderBy(x => x.Id).Skip((pageNumber - 1) * AmmountOfRecordsByPage).Take(AmmountOfRecordsByPage).Include(t => t.UserAuthor).Include(t => t.UserRecepient).Include(t => t.Category).Include(t => t.Priority).Include(t => t.Status);
+            return tickets.ToList();
+        }
+
+        public List<Ticket> GetTicketsListByCreationDateAndPage(DateTime creationDate, int pageNumber)
+        {
+            var tickets = db.Tickets.Where(x => DateTime.Compare(x.CreationDate,creationDate)==0 ).OrderBy(x => x.Id).Skip((pageNumber - 1) * AmmountOfRecordsByPage).Take(AmmountOfRecordsByPage).Include(t => t.UserAuthor).Include(t => t.UserRecepient).Include(t => t.Category).Include(t => t.Priority).Include(t => t.Status);
+            return tickets.ToList();
+        }
+
+        public List<Ticket> GetTicketsListByFilters(int pageNumber, DateTime? creationDate, int? categoryId, string keyWord )
+        {
+            var tickets = GetTicketsList();
+            
+            if (creationDate != null) {
+                tickets = tickets.Where(x => DateTime.Compare(x.CreationDate, (DateTime)creationDate) == 0).ToList();
+             }
+
+            if (categoryId != 0 && categoryId != null) {
+                tickets = tickets.Where(x => x.CategoryID == categoryId).ToList();
+            }
+
+             if (keyWord != null && !keyWord.Equals("")) {
+                tickets = tickets.Where(x => x.Subject.IndexOf(keyWord, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+             }
+             tickets = tickets.OrderBy(x => x.Id).Skip((pageNumber - 1) * AmmountOfRecordsByPage).Take(AmmountOfRecordsByPage).ToList();
+             return tickets.ToList();
+        }
+
+        public List<Ticket> GetTicketsListByFilters(DateTime? creationDate, int? categoryId, string keyWord)
+        {
+            var tickets = GetTicketsList();
+
+            if (creationDate != null)
+            {
+                tickets = tickets.Where(x => DateTime.Compare(x.CreationDate, (DateTime)creationDate) == 0).ToList();
+            }
+
+            if (categoryId != 0 && categoryId != null)
+            {
+                tickets = tickets.Where(x => x.CategoryID == categoryId).ToList();
+            }
+
+            if (keyWord != null && !keyWord.Equals(""))
+            {
+                tickets = tickets.Where(x => x.Subject.IndexOf(keyWord, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+            }
+            return tickets.ToList();
+        }
+
         public void CreateNewTicket(Ticket ticket) {
                 db.Tickets.Add(ticket);
                 db.SaveChanges();

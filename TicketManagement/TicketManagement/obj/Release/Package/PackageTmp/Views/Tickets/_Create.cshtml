@@ -1,0 +1,26 @@
+﻿
+@model TicketManagement.Models.Ticket
+
+@{
+    AjaxOptions ajaxOptions = new AjaxOptions()
+    {
+        OnBegin = "OnBeginCreate(data)",
+        OnSuccess = "OnSuccesCreate(data)",
+        OnFailure = "OnFailureCreate(data)",
+        OnComplete = "OnCompleteCreate(data)"
+    };
+}
+
+<div class="modal-body">
+    <div>
+
+
+        @using (Ajax.BeginForm("Create", "Tickets", null, ajaxOptions))
+        {
+
+            
+        }
+    </div>
+
+
+</div>

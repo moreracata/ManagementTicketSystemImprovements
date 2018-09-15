@@ -1,5 +1,4 @@
-﻿@model IEnumerable<TicketManagement.Models.Ticket>
-
+﻿@model TicketManagement.Models.TicketViewModel
 
 <h2>Administracion de Tickets</h2>
 @using (Html.BeginForm())
@@ -24,32 +23,33 @@
     </fieldset>
 }
 
+@Html.ActionLink("Create New Ticket", "CreateTicket", "Tickets", null, new { @class = "btn modal-link edit-link" })
+
 
 <table class="table tickets-table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Id)
+            # Ticket
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Subject)
+            Description
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.StatusID)
+            Status
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CreationDate)
+            Creation Date
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LastModificationDate)
+            Modification Date
         </th>
     </tr>
 
-    @foreach (var item in Model)
+    @foreach (var item in Model.Tickets)
     {
         <tr>
             <td>
-                @Html.ActionLink("" + item.Id, "EditTicket","Tickets" ,new { id = item.Id }, new { @class = "modal-link edit-link" })
-                
+                @Html.ActionLink("" + item.Id, "EditTicket", "Tickets", new { id = item.Id }, new { @class = "modal-link edit-link" })
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Subject)
@@ -63,11 +63,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.LastModificationDate)
             </td>
-            
+
         </tr>
     }
-
 </table>
+@{Html.RenderPartial("_Paginator", Model); }
 
 <div id="modal-container" class="modal fade"
      tabindex="-1" role="dialog">
