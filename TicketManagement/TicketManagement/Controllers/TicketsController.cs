@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using TicketManagement.Models;
 using TicketManagement.Services;
+using Microsoft.AspNet.Identity;
 
 namespace TicketManagement.Controllers
 {
@@ -20,7 +21,7 @@ namespace TicketManagement.Controllers
         public ActionResult Index(string keywordFilter,DateTime? creationDateFilter, int? categoryFilter, int pageNumber = 1)
         {
             var tickets = ticketService.GetTicketsListByFilters(pageNumber, creationDateFilter, categoryFilter, keywordFilter);
-            var tickets2 = ticketService.GetTicketsList();  //var tickets = ticketService.GetTicketsListByPage(pageNumber);
+            //var tickets2 = ticketService.GetTicketsList();  //var tickets = ticketService.GetTicketsListByPage(pageNumber);
                List <SelectListItem> categoriesSelect = new List<SelectListItem>();
                var categories = ticketService.GetAllCategories();
                foreach (var category in categories)
@@ -115,7 +116,8 @@ namespace TicketManagement.Controllers
 
         public ActionResult CreateTicket()
         {
-
+            ViewBag.AuthorName = User.Identity.GetUserName();
+            ViewBag.AuthorID = User.Identity.GetUserId();
             ViewBag.CategoriesList = new SelectList(ticketService.GetAllCategories(), "Id", "Name");
             ViewBag.StatusList = new SelectList(ticketService.GetAllStatus(), "Id", "Name");
             ViewBag.PrioritiesList = new SelectList(ticketService.GetAllPriorities(), "Id", "Name");
@@ -143,36 +145,40 @@ namespace TicketManagement.Controllers
             }
         }
 
-        // GET: Tickets/Create
-        public ActionResult Create()
-        {
-           /* ViewBag.AuthorID = new SelectList(db.ApplicationUsers, "Id", "Email");
-            ViewBag.RecepientID = new SelectList(db.ApplicationUsers, "Id", "Email");
-            ViewBag.CategoryID = new SelectList(db.TicketCategories, "Id", "Name");
-            ViewBag.PriorityID = new SelectList(db.TicketPriorities, "Id", "Name");
-            ViewBag.StatusID = new SelectList(db.TicketStatus, "Id", "Name");*/
-            return View();
-        }
+   
 
         // POST: Tickets/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,AuthorID,RecepientID,CategoryID,PriorityID,StatusID,Subject,CreationDate,LastModificationDate,Content")] Ticket ticket)
+        public ActionResult Create(Ticket ticket)
         {
+            var nuevo = new Ticket()
+            {
+ 
+                Subject = "Prueba",
+                CreationDate = DateTime.Now,
+                LastModificationDate = DateTime.Now,
+                Contenido = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac vehicula risus. Maecenas eu odio tempus, commodo ligula nec, mollis dolor. Donec at lacus ut ex mattis viverra. Nullam aliquam sed dolor id pulvinar. Donec vitae imperdiet risus. Aenean sed ante scelerisque, elementum odio sed, interdum metus. Praesent pulvinar lobortis lacus eget luctus. Phasellus dictum turpis tortor, quis consectetur lacus pellentesque at.",
+                AuthorID = User.Identity.GetUserId(),
+                RecepientID = User.Identity.GetUserId(),
+                CategoryID = 1,
+                PriorityID = 2,
+                StatusID = 3
+            };
             if (ModelState.IsValid)
             {
                 ticketService.CreateNewTicket(ticket);
                 return RedirectToAction("Index");
             }
 
-           /* ViewBag.AuthorID = new SelectList(db.ApplicationUsers, "Id", "Email", ticket.AuthorID);
-            ViewBag.RecepientID = new SelectList(db.ApplicationUsers, "Id", "Email", ticket.RecepientID);
-            ViewBag.CategoryID = new SelectList(db.TicketCategories, "Id", "Name", ticket.CategoryID);
-            ViewBag.PriorityID = new SelectList(db.TicketPriorities, "Id", "Name", ticket.PriorityID);
-            ViewBag.StatusID = new SelectList(db.TicketStatus, "Id", "Name", ticket.StatusID);*/
-            return View(ticket);
+            /* ViewBag.AuthorID = new SelectList(db.ApplicationUsers, "Id", "Email", ticket.AuthorID);
+             ViewBag.RecepientID = new SelectList(db.ApplicationUsers, "Id", "Email", ticket.RecepientID);
+             ViewBag.CategoryID = new SelectList(db.TicketCategories, "Id", "Name", ticket.CategoryID);
+             ViewBag.PriorityID = new SelectList(db.TicketPriorities, "Id", "Name", ticket.PriorityID);
+             ViewBag.StatusID = new SelectList(db.TicketStatus, "Id", "Name", ticket.StatusID);*/
+            return RedirectToAction("Index");
         }
 
         // GET: Tickets/Edit/5

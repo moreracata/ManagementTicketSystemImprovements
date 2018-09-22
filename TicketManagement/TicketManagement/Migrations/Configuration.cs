@@ -88,7 +88,6 @@ namespace TicketManagement.Migrations
 
 
             var nuevo = new Ticket() {
-                Id = 0,
                 Subject = "This a test ticket",
                 CreationDate = DateTime.Now,
                 LastModificationDate = DateTime.Now,

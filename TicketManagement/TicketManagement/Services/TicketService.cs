@@ -85,9 +85,8 @@ namespace TicketManagement.Services
 
         public void CreateNewTicket(Ticket ticket) {
                 db.Tickets.Add(ticket);
-                db.SaveChanges();
+                int result = db.SaveChanges();
         }
-
 
         public void DeleteTicket(int id) {
             Ticket ticket = db.Tickets.Find(id);
@@ -123,42 +122,6 @@ namespace TicketManagement.Services
 
         public TicketPriority GetPriorityById(int id) {
             return db.TicketPriorities.Find(id);
-        }
-
-        public void CrearTicKetPrueba() {
-           
-            
-            
-
-            ApplicationUser author =GetUserById("2d14e382-1853-4a2e-83b3-619556f3a991");
-            ApplicationUser recepient = GetUserById("604f4313-fb74-40bc-8ce4-1ca909ee3f27"); ;
-            TicketCategory category = GetCategoryById(1);
-            TicketPriority priority = GetPriorityById(1);
-            TicketStatus status = GetStatusById(1);
-    
-            var nuevo = new Ticket()
-            {
-
-                Subject = "This a test ticket",
-                CreationDate = DateTime.Now,
-                LastModificationDate = DateTime.Now,
-                Contenido = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac vehicula risus. Maecenas eu odio tempus, commodo ligula nec, mollis dolor. Donec at lacus ut ex mattis viverra. Nullam aliquam sed dolor id pulvinar. Donec vitae imperdiet risus. Aenean sed ante scelerisque, elementum odio sed, interdum metus. Praesent pulvinar lobortis lacus eget luctus. Phasellus dictum turpis tortor, quis consectetur lacus pellentesque at.",
-                AuthorID = "2d14e382-1853-4a2e-83b3-619556f3a991",
-                RecepientID = "604f4313-fb74-40bc-8ce4-1ca909ee3f27",
-                CategoryID=1,
-                PriorityID = 1,
-                StatusID = 1,
-                UserAuthor = author,
-                UserRecepient = recepient,
-                Category = category,
-                Priority = priority,
-                Status = status
-
-
-            };
-            CreateNewTicket(nuevo);
-
-
         }
 
         public List<ApplicationUser> GetAllUsers()

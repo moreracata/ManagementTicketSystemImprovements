@@ -36,6 +36,9 @@
 <table class="table tickets-table">
     <tr>
         <th>
+            @Html.CheckBox("", false, new { @class = "form-control select-all-btn", id = "select-all-btn"})
+        </th>
+        <th>
             # Ticket
         </th>
         <th>

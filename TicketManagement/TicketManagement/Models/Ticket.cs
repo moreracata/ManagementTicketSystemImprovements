@@ -40,11 +40,13 @@ namespace TicketManagement.Models
 
         [Display(Name = "Fecha Creacion")]
         [DisplayName("Fecha Creacion")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
         [DataType(DataType.DateTime)]
         public DateTime CreationDate { get; set; }
 
         [Display(Name = "Fecha Modificacion")]
         [DisplayName("Fecha Modificacion")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
         [DataType(DataType.DateTime)]
         public DateTime LastModificationDate { get; set; }
 

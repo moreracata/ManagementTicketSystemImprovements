@@ -236,6 +236,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Properties\PublishProfiles\ManagemetSystemTicket - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\Ticket-Managment-System - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\Ticket-Managment-SystemDB - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\TicketManagementSystemTest - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\TicketManagementSystemTestCata - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
@@ -290,7 +292,7 @@
     <Content Include="Views\Tickets\Edit.cshtml" />
     <Content Include="Views\Tickets\Index.cshtml" />
     <Content Include="Views\Tickets\_Edit.cshtml" />
-    <Content Include="Views\Tickets\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Views\Tickets\testEditorTemplates\DateTime.cshtml" />
     <Content Include="Views\Tickets\_Create.cshtml" />
     <Content Include="Views\Tickets\_Paginator.cshtml" />
   </ItemGroup>

@@ -117,3 +117,7 @@ a {
 .pagination > li > a, .pagination > li > span {
     border-color: #66811f !important;
 }
+
+.disabled {
+    background-color: lightgray;
+}

@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Data.Entity.Validation;
 using System.Security.Claims;
@@ -39,6 +40,8 @@ namespace TicketManagement.Models
             //modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
             //modelBuilder.Conventions.Add<OneToManyCascadeDeleteConvention>();
             //modelBuilder.Conventions.Add<ManyToManyCascadeDeleteConvention>();
+
+            modelBuilder.Properties<DateTime>().Configure(x=> x.HasColumnType("datetime2"));
 
             modelBuilder.Entity<Ticket>().HasRequired(x => x.Category);
             modelBuilder.Entity<Ticket>().HasRequired(x => x.Status);
