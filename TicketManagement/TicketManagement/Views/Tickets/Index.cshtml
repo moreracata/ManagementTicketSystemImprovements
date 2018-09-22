@@ -36,7 +36,7 @@
 <table class="table tickets-table">
     <tr>
         <th>
-            @Html.CheckBox("", false, new { @class = "form-control select-all-btn", id = "select-all-btn"})
+            @Html.CheckBox("select-all-btn", false, new { @class = "form-control select-all-btn", id = "select-all-btn"})
         </th>
         <th>
             # Ticket
@@ -61,6 +61,9 @@
     @foreach (var item in Model.Tickets)
     {
         <tr>
+            <td>
+                @Html.CheckBox("delete-reg" + item.Id, false, new { @class = "form-control delete-reg", id = "delete-reg"+item.Id })
+            </td>
             <td>
                 @Html.ActionLink("" + item.Id, "EditTicket", "Tickets", new { id = item.Id }, new { @class = "modal-link edit-link" })
             </td>
